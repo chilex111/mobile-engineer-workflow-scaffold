@@ -1,0 +1,14 @@
+targets:
+  $default:
+    builders:
+      hive_generator|hive_generator:
+        # Scope hive_generator to only files that use @HiveType / @HiveField
+        # Prevents conflicts with flutter_gen and riverpod_generator outputs
+        generate_for:
+          include:
+            - lib/features/**/data/models/*.dart
+      riverpod_generator|riverpod_generator:
+        generate_for:
+          include:
+            - lib/features/**/presentation/providers/*.dart
+            - lib/core/**/*.dart
